@@ -18,6 +18,17 @@ Create a sonar namespace:
 kubectl create namespace sonar
 ```
 
+### tls
+Ingress is deployed with TLS, for testing purposes a self signed certificate can be used (but this will cause cert validation issues later when sonar scanners try and connect!). Creating some example certificates: 
+
+```
+# Generate cert for sonarqube ingress
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -out sonar-ingress-tls.crt \
+    -keyout sonar-ingress-tls.key \
+    -subj "/CN=sonar.example.com/O=sonar-ingress-tls"
+```
+
 ### secrets
 Relies on some secrets to be created in the 'sonar' namespace before deploy that define database credentials and TLS certificates to be used in the deployment. The secrets are as follows:
 
