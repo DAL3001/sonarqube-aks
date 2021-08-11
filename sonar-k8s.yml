@@ -243,7 +243,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - sonar.hi55.dev
+    - sonar.example.dev
     secretName: sonar-ingress-tls
   rules:
   - http:
